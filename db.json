@@ -1,19 +1,24 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Estudar javascript",
-      "completed": true
+      "title": "Java Script",
+      "completed": true,
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Estudar Vue",
-      "completed": false
+      "title": "Laravel",
+      "completed": true,
+      "id": 2
     },
     {
-      "id": 3,
-      "title": "Estudar composition API",
-      "completed": false
+      "title": "Docker",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "title": "Vuejs",
+      "completed": false,
+      "id": 4
     }
   ]
 }

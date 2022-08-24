@@ -28,24 +28,28 @@ import TodoSpinner from "./components/TodoSpinner.vue";
 import TodoFormAdd from "./components/TodoFormAdd.vue";
 import TodoItems from "./components/TodoItems.vue";
 import TodoEmpty from "./components/TodoEmpty.vue";
+import { ref } from "vue";
+import { useStore } from "vuex";
 
 export default {
   name: "App",
   components: { TodoSpinner, TodoFormAdd, TodoItems, TodoEmpty },
-  data() {
-    return {
-      loading: false,
-    };
-  },
-  created() {
-    this.loading = true;
 
-    //Só pra testar o loadign
+  setup() {
+    let loading = ref(false);
+    const store = useStore();
+
+    loading.value = true;
+    //Só pra testar o loading
     setTimeout(() => {
-      this.$store.dispatch("getTodos").finally(() => {
-        this.loading = false;
+      store.dispatch("getTodos").finally(() => {
+        loading.value = false;
       });
     }, 1000);
+    return {
+      loading,
+    };
+    //
   },
 };
 </script>

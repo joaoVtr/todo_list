@@ -22,23 +22,32 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
+
 export default {
-  data() {
-    return {
-      title: "",
-    };
-  },
-  methods: {
-    addTodo() {
-      this.$store
+  setup() {
+    const title = ref("");
+    const store = useStore();
+
+    const addTodo = () => {
+      if (!title.value) {
+        return false;
+      }
+      store
         .dispatch("addTodo", {
-          title: this.title,
+          title: title.value,
           completed: false,
         })
         .finally(() => {
-          this.title = "";
+          title.value = "";
         });
-    },
+    };
+
+    return {
+      title,
+      addTodo,
+    };
   },
 };
 </script>
